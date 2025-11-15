@@ -3,24 +3,32 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        ArrayList<String> noms = new ArrayList<>();
+        GestionUniversity gu = new GestionUniversity();
 
-        noms.add("amine");
-        noms.add("karim");
-        noms.add("sonia");
+        Etudiant e1 = new Etudiant(1, "amine", "1");
+        Etudiant e2 = new Etudiant(2, "khalil", "2");
+        Etudiant e3 = new Etudiant(3, "feres", "3");
 
-        System.out.println("noms " + noms);
+        gu.ajouterEtudiant(e1);
+        gu.ajouterEtudiant(e2);
+        gu.ajouterEtudiant(e3);
 
-        System.out.println("Premier nom" + noms.get(0));
+        gu.displayEtudiants();
 
-        noms.set(1, "yassine");
-        System.out.println("apres modification " + noms);
+        System.out.println("recherche e2 " + gu.rechercherEtudiant(e2));
 
-        noms.remove("sonia");
-        System.out.println("apres suppression" + noms);
+        System.out.println("recherche amine : " + gu.rechercherEtudiant("amine"));
 
-        for (String nom : noms) {
-            System.out.println("- " + nom);
-        }
+        gu.supprimerEtudiant(e1);
+        System.out.println("suppression e1");
+        gu.displayEtudiants();
+
+        System.out.println("tri id");
+        gu.trierEtudiantsParId();
+        gu.displayEtudiants();
+
+        System.out.println("tri nom");
+        gu.trierEtudiantsParNom();
+        gu.displayEtudiants();
     }
 }
